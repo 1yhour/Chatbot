@@ -1,0 +1,73 @@
+/* Custom scrollbar for a more modern look */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #202123; /* Dark track */
+}
+::-webkit-scrollbar-thumb {
+  background: #434654; /* Lighter thumb */
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #565869;
+}
+
+/* Style for the textarea to prevent resizing handle */
+textarea {
+  resize: none;
+}
+
+/* Typing indicator animation */
+.typing-dot {
+  width: 6px;
+  height: 6px;
+  background-color: #a0a0a0;
+  border-radius: 50%;
+  display: inline-block;
+  animation: bounce 1.4s infinite ease-in-out both;
+}
+
+.typing-dot:nth-child(2) {
+  animation-delay: -0.16s;
+}
+
+.typing-dot:nth-child(3) {
+  animation-delay: -0.32s;
+}
+
+@keyframes bounce {
+  0%,
+  80%,
+  100% {
+    transform: scale(0);
+  }
+  40% {
+    transform: scale(1);
+  }
+}
+
+/* Styles for the right sidebar */
+#right-sidebar {
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 100%;
+  /* By default it's moved off-screen */
+}
+
+/* When the 'open' class is added, it moves into view */
+#right-sidebar.open {
+  transform: translateX(0);
+}
+
+/* When the sidebar is open, the main content and the open button are pushed to the left */
+main.sidebar-open,
+#open-sidebar-btn.sidebar-open {
+  transform: translateX(-24rem); /* 24rem is the width of the sidebar (w-96) */
+}
+
+/* Style for the open button icon to flip when sidebar is open */
+#open-sidebar-btn.sidebar-open i {
+  transform: rotate(180deg);
+}

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chatbot Project</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='front.css') }}"
+    />
+  </head>
+  <body class="bg-[#343541] font-sans text-white">
+    <div class="flex h-screen relative overflow-hidden">
+      <aside
+        id="left-sidebar"
+        class="w-64 bg-[#202123] p-2 flex flex-col flex-shrink-0 absolute md:relative z-20 h-full transition-transform duration-300 ease-in-out -translate-x-full md:translate-x-0"
+      >
+        <div class="flex items-center justify-between mb-2">
+          <button
+            class="w-full border border-gray-600 rounded-lg p-3 text-left text-sm hover:bg-gray-700/50 transition-colors duration-200 flex items-center"
+          >
+            <i class="fa-solid fa-plus mr-2"></i>
+            <span>New chat</span>
+          </button>
+          <button
+            id="left-sidebar-close-btn"
+            class="p-2 ml-2 text-gray-400 hover:text-white md:hidden"
+          >
+            <i class="fa-solid fa-chevron-left fa-lg"></i>
+          </button>
+        </div>
+
+        <div class="flex-1 mt-2 space-y-2 overflow-y-auto">
+          <div class="p-3 rounded-lg text-sm cursor-pointer bg-gray-700/50">
+            Introduction
+          </div>
+          <div
+            class="p-3 rounded-lg text-sm cursor-pointer hover:bg-gray-700/50"
+          >
+            Responsive Design Tips
+          </div>
+        </div>
+
+        <div class="border-t border-gray-700 p-2">
+          <div
+            class="p-3 rounded-lg text-sm cursor-pointer hover:bg-gray-700/50 flex items-center gap-3"
+          >
+            <div
+              class="w-7 h-7 rounded-full bg-green-500 flex items-center justify-center font-bold"
+            >
+              G
+            </div>
+            <span>User</span>
+          </div>
+        </div>
+      </aside>
+
+      <main
+        id="main-content"
+        class="flex-1 flex flex-col transition-all duration-300"
+      >
+        <div
+          class="flex items-center p-2 border-b border-gray-700 md:hidden"
+        >
+          <button id="menu-button" class="p-2 text-white">
+            <i class="fa-solid fa-bars fa-lg"></i>
+          </button>
+          <h1 class="text-center font-semibold flex-1">SmartBot</h1>
+        </div>
+
+        <div id="chat-messages" class="flex-1 overflow-y-auto px-6 pb-6 pt-16 space-y-8">
+            <div class="flex justify-center">
+              <div
+                class="w-16 h-16 rounded-full bg-white flex items-center justify-center"
+              >
+                  <svg width="41" height="41" viewBox="0 0 41 41" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M35.875 18.2085C35.875 17.2502 35.4998 16.3335 34.8332 15.6668C34.1665 15.0002 33.2498 14.625 32.2917 14.625H21.4167C20.9375 14.625 20.5 14.4542 20.1875 14.1417C19.875 13.8292 19.7083 13.3958 19.7083 12.9167V5.125C19.7083 4.16683 19.3332 3.25016 18.6665 2.5835C17.9998 1.91683 17.0832 1.54167 16.125 1.54167C15.1668 1.54167 14.2502 1.91683 13.5835 2.5835C12.9168 3.25016 12.5417 4.16683 12.5417 5.125V12.9167C12.5417 13.3958 12.3708 13.8292 12.0583 14.1417C11.7458 14.4542 11.3021 14.625 10.8333 14.625H5.125C4.16683 14.625 3.25016 15.0002 2.5835 15.6668C1.91683 16.3335 1.54167 17.2502 1.54167 18.2085C1.54167 19.1668 1.91683 20.0835 2.5835 20.7502C3.25016 21.4168 4.16683 21.875 5.125 21.875H10.8333C11.3021 21.875 11.7458 22.0458 12.0583 22.3583C12.3708 22.6708 12.5417 23.1042 12.5417 23.5833V29.4583C12.5417 30.4167 12.9168 31.3333 13.5835 32C14.2502 32.6667 15.1668 33.0417 16.125 33.0417C17.0832 33.0417 17.9998 32.6667 18.6665 32C19.3332 31.3333 19.7083 30.4167 19.7083 29.4583V23.5833C19.7083 23.1042 19.875 22.6708 20.1875 22.3583C20.5 22.0458 20.9375 21.875 21.4167 21.875H32.2917C33.2498 21.875 34.1665 21.4168 34.8332 20.7502C35.4998 20.0835 35.875 19.1668 35.875 18.2085Z" transform="translate(2.08331 3.54163)" fill="url(#paint0_linear_137_34)"></path>
+                      <defs>
+                          <linearGradient id="paint0_linear_137_34" x1="1.54167" y1="18.2083" x2="35.875" y2="18.2083" gradientUnits="userSpaceOnUse">
+                              <stop stop-color="#4285F4"></stop><stop offset="0.25" stop-color="#9B72CB"></stop><stop offset="0.5" stop-color="#D96570"></stop><stop offset="0.75" stop-color="#F2A60C"></stop><stop offset="1" stop-color="#4285F4"></stop>
+                          </linearGradient>
+                      </defs>
+                  </svg>
+              </div>
+            </div>
+            <h1 class="text-center text-4xl font-bold">How can I help you today?</h1>
+        </div>
+        
+        <div class="p-6 bg-[#343541] w-full max-w-4xl mx-auto">
+            <div class="relative">
+                <textarea id="message-input" rows="1" class="w-full bg-[#40414f] border border-gray-600 rounded-xl p-4 pr-12 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Message SmartBot..."></textarea>
+                <button id="send-button" class="absolute right-3 top-1/2 -translate-y-1/2 p-2 rounded-lg bg-gray-500 hover:bg-gray-400">
+                    <i class="fa-solid fa-arrow-up text-white"></i>
+                </button>
+            </div>
+            <p class="text-xs text-center text-gray-400 mt-2">
+            SmartBot can make mistakes. Consider checking important information.
+          </p>
+        </div>
+      </main>
+        <aside
+          id="right-sidebar"
+          class="w-96 bg-[#202123] p-4 flex flex-col absolute top-0 right-0 h-full flex-shrink-0 transition-transform duration-300 ease-in-out transform translate-x-full z-20"
+        >
+          <div class="flex justify-between items-center border-b border-gray-700 pb-2 mb-4">
+            <h2 class="text-lg font-semibold text-yellow-400">Under the Hood</h2>
+            <button id="close-sidebar-btn" class="text-gray-400 hover:text-white">
+              <i class="fa-solid fa-xmark fa-lg"></i>
+            </button>
+          </div>
+          <div class="flex-1 overflow-y-auto space-y-4">
+            <div>
+              <h3 class="font-semibold mb-2">User Query Embedding</h3>
+              <div id="user-query-embedding" class="bg-gray-800 p-2 rounded-lg text-xs text-gray-400 break-words">
+                Not yet analyzed 
+              </div>
+            </div>
+            <div>
+              <h3 class="font-semibold mb-2">Matched KB Question Embedding</h3>
+              <div id="matched-kb-embedding" class="bg-gray-800 p-2 rounded-lg text-xs text-gray-400 break-words">
+                Not yet analyzed
+              </div>
+            </div>
+            <div>
+              <h3 class="font-semibold mb-2">Most Similar KB Question:</h3>
+              <p id="matched-question" class="text-sm bg-gray-800 p-2 rounded-lg">
+                Not yet analyzed
+              </p>
+            </div>
+            <div>
+              <h3 class="font-semibold mb-2">Cosine Similarity Score:</h3>
+              <p id="similarity-score" class="text-sm bg-gray-800 p-2 rounded-lg font-mono text-yellow-400">
+                Not yet analyzed
+              </p>
+            </div>
+          </div>
+        </aside>
+
+      <button
+        id="open-sidebar-btn"
+        class="absolute top-4 right-4 bg-yellow-500 text-black p-2 rounded-full shadow-lg hover:bg-yellow-400 transition-all duration-300 z-10"
+      >
+        <i class="fa-solid fa-chevron-left"></i>
+      </button>
+    </div>
+    <script src="{{ url_for('static', filename='front.js') }}" defer></script>
+  </body>
+</html>
